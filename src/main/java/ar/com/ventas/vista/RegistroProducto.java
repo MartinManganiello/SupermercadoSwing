@@ -197,7 +197,10 @@ public class RegistroProducto extends javax.swing.JInternalFrame {
         habilitarFormulario(true);
         btBorrar.setEnabled(false);
     }//GEN-LAST:event_btNuevoActionPerformed
-
+/**
+ * Método que guarda el producto en la base de datos.
+ * @param evt 
+ */
     private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
         if (validarFormulario()) {
             producto.setNombre(ftfNombre.getText().trim());
@@ -223,7 +226,10 @@ public class RegistroProducto extends javax.swing.JInternalFrame {
             cargarTabla();
         }
     }//GEN-LAST:event_btGuardarActionPerformed
-
+/**
+ * Método que borra el producto de la base de datos.
+ * @param evt 
+ */
     private void btBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBorrarActionPerformed
         int opcion = JOptionPane.showConfirmDialog(this, "Desea borrar el producto " + producto + "?");
         if (opcion == 0) {
@@ -237,11 +243,17 @@ public class RegistroProducto extends javax.swing.JInternalFrame {
             cargarTabla();
         }
     }//GEN-LAST:event_btBorrarActionPerformed
-
+/**
+ * Método que cancela la selección del producto.
+ * @param evt 
+ */
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
         habilitarFormulario(false);
     }//GEN-LAST:event_btCancelarActionPerformed
-
+/**
+ * Método que selecciona el producto desde la tabla de productos.
+ * @param evt 
+ */
     private void tbTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTablaMouseClicked
         if (evt.getClickCount() == 2) {
             ProductoTableModel tm = (ProductoTableModel) tbTabla.getModel();
@@ -254,7 +266,10 @@ public class RegistroProducto extends javax.swing.JInternalFrame {
             habilitarFormulario(true);
         }
     }//GEN-LAST:event_tbTablaMouseClicked
-
+/**
+ * Habilita o deshabilita el formulario.
+ * @param activo 
+ */
     private void habilitarFormulario(boolean activo) {
         btNuevo.setEnabled(!activo);
         btGuardar.setEnabled(activo);
@@ -269,14 +284,19 @@ public class RegistroProducto extends javax.swing.JInternalFrame {
             limpiarFormulario();
         }
     }
-
+/**
+ * Limpia el formulario
+ */
     private void limpiarFormulario() {
         producto = null;
         ftfNombre.setValue("");
         ftfPrecioCompra.setText("");
         ftfPrecioVenta.setText("");
     }
-
+/**
+ * Valida que los datos ingresados sean los correctos.
+ * @return devuelve true si son correctos o false si hubo algún error.
+ */
     private boolean validarFormulario() {
         if (ftfNombre.getText().trim().length() < 2) {
             JOptionPane.showMessageDialog(this, "Nombre invalido.", "Alerta", JOptionPane.WARNING_MESSAGE);
@@ -300,7 +320,9 @@ public class RegistroProducto extends javax.swing.JInternalFrame {
         }
         return true;
     }
-
+/**
+ * Carga la tabla de productos.
+ */
     private void cargarTabla() {
         ProductoTableModel tm = (ProductoTableModel) tbTabla.getModel();
         try {

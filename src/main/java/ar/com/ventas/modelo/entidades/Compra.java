@@ -2,7 +2,6 @@ package ar.com.ventas.modelo.entidades;
 
 import ar.com.ventas.modelo.entidades.enums.Estado;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -104,6 +103,15 @@ public class Compra implements Serializable {
 
     public void setEstado(Estado estado) {
         this.estado = estado;
+    }
+      public void setEstado(int estado) {
+           if (estado == Estado.ABIERTA.getId()) {
+            setEstado(Estado.ABIERTA);
+        } else if (estado == Estado.FINALIZADA.getId()) {
+            setEstado(Estado.FINALIZADA);
+        } else if (estado == Estado.CANCELADA.getId()) {
+            setEstado(Estado.CANCELADA);
+        }
     }
 
     public Proveedor getCodigoProveedor() {
