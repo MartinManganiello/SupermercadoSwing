@@ -9,7 +9,9 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
     }
-
+/**
+ * Método generado por NetBeans, encargado de iniciar los componentes de la ventana.
+ */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 

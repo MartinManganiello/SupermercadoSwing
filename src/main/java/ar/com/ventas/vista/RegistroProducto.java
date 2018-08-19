@@ -188,7 +188,10 @@ public class RegistroProducto extends javax.swing.JInternalFrame {
 
         setBounds(10, 10, 526, 450);
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * Método encargado de crear un nuevo producto.
+ * @param evt 
+ */
     private void btNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNuevoActionPerformed
         producto = new Producto();
         habilitarFormulario(true);

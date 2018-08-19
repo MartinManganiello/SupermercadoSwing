@@ -1,6 +1,7 @@
 package ar.com.ventas;
 
 import ar.com.ventas.vista.Menu;
+import java.awt.EventQueue;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -17,14 +18,21 @@ public class Principal {
     /**
      * Método encargado de iniciar la aplicación
      *
-     * @param args lista de parametros del método main
+     * @param args lista de parámetros del método main
      */
     public static void main(String[] args) {
         lookAndFeel();
+        /*
         Menu menu = new Menu();
         menu.setVisible(true);
+        Estas dos lineas son equivalentes a la linea 29*/
+        new Menu().setVisible(true);
     }
 
+    /**
+     * Establece el aspecto de la interfaz gráfica
+     *
+     */
     private static void lookAndFeel() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
