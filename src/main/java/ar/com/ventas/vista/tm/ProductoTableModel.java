@@ -3,7 +3,11 @@ package ar.com.ventas.vista.tm;
 import ar.com.ventas.modelo.entidades.Producto;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-
+/**
+ * Clase que define el modelo para la tabla producto
+ *
+ * @author Martín Manganiello
+ */
 public class ProductoTableModel extends AbstractTableModel {
    private String columnas[] = {"Nombre"};
     private List<Producto> datos;

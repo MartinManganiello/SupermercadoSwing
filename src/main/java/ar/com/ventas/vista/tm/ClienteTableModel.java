@@ -5,7 +5,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
- * Clase que define el modelo para la tabla clientes
+ * Clase que define el modelo para la tabla cliente
  *
  * @author Martín Manganiello
  */

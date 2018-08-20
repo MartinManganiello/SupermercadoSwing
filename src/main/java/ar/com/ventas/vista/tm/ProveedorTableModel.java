@@ -3,7 +3,11 @@ package ar.com.ventas.vista.tm;
 import ar.com.ventas.modelo.entidades.Proveedor;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-
+/**
+ * Clase que define el modelo para la tabla proveedor
+ *
+ * @author Martín Manganiello
+ */
 public class ProveedorTableModel extends AbstractTableModel {
 
     private String columnas[] = {"Nombre", "CUIT"};

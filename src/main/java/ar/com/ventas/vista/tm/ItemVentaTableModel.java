@@ -4,11 +4,14 @@ import ar.com.ventas.modelo.entidades.Itemventa;
 import java.text.NumberFormat;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-
+/**
+ * Clase que define el modelo para la tabla itemVenta
+ *
+ * @author Martín Manganiello
+ */
 public class ItemVentaTableModel extends AbstractTableModel {
 
     private final NumberFormat NF = NumberFormat.getNumberInstance();
-    private final NumberFormat NFC = NumberFormat.getCurrencyInstance();
     private String columnas[] = {"Producto", "Cantidad", "Valor Unitario"};
     private List<Itemventa> datos;
 

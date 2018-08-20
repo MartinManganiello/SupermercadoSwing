@@ -4,7 +4,11 @@ import ar.com.ventas.modelo.entidades.Itemcompra;
 import java.text.NumberFormat;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-
+/**
+ * Clase que define el modelo para la tabla itemCompra
+ *
+ * @author Martín Manganiello
+ */
 public class ItemCompraTableModel extends AbstractTableModel {
 
     private final NumberFormat NF = NumberFormat.getNumberInstance();

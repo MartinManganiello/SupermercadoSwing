@@ -193,6 +193,8 @@ public class RealizarCompra extends javax.swing.JInternalFrame {
         ftfFechaCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d/MM/yyyy"))));
         ftfFechaCompra.setValue(new Date());
 
+        ftfValorTotal.setEditable(false);
+
         javax.swing.GroupLayout pnFormLayout = new javax.swing.GroupLayout(pnForm);
         pnForm.setLayout(pnFormLayout);
         pnFormLayout.setHorizontalGroup(
@@ -365,48 +367,76 @@ public class RealizarCompra extends javax.swing.JInternalFrame {
 
         setBounds(10, 10, 464, 500);
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+     * Método que crea una nueva compra.
+     *
+     * @param evt
+     */
     private void btNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNuevoActionPerformed
         compra = new Compra();
         habilitarFormulario(true);
     }//GEN-LAST:event_btNuevoActionPerformed
-
+    /**
+     * Método que guarda la compra.
+     *
+     * @param evt
+     */
     private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
         guardar(false);
     }//GEN-LAST:event_btGuardarActionPerformed
-
+    /**
+     * Método que cancela la compra
+     *
+     * @param evt
+     */
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
         habilitarFormulario(false);
     }//GEN-LAST:event_btCancelarActionPerformed
-
+    /**
+     * Método que abre la ventana BuscaProveedor
+     *
+     * @param evt
+     */
     private void btProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProveedorActionPerformed
-        BuscaProveedor buscaProveedor = new BuscaProveedor(this);
-        buscaProveedor.setVisible(true);
+//        BuscaProveedor buscaProveedor = new BuscaProveedor(this);
+//        buscaProveedor.setVisible(true);
+        new BuscaProveedor(this).setVisible(true);
     }//GEN-LAST:event_btProveedorActionPerformed
-
+    /**
+     * Método que abre la ventana buscaProducto.
+     *
+     * @param evt
+     */
     private void btProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProductoActionPerformed
-        BuscaProducto buscaProducto = new BuscaProducto(this);
-        buscaProducto.setVisible(true);
+//        BuscaProducto buscaProducto = new BuscaProducto(this);
+//        buscaProducto.setVisible(true);
+        new BuscaProducto(this).setVisible(true);
     }//GEN-LAST:event_btProductoActionPerformed
-
+/**
+ * Método que agrega un item a la compra.
+ * @param evt 
+ */
     private void btAgregarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarItemActionPerformed
         if (validarFormularioItems()) {
             Itemcompra iv = new Itemcompra();
             iv.setCodigoProducto((Producto) ftfProducto.getValue());
             iv.setCodigoCompra(compra);
             iv.setCantidad((int) spCantidad.getValue());
-            iv.setValorUnitario((Double) ftfValorUnitario.getValue());
-            compra.addItem(iv);
+            iv.setValorUnitario((double) ftfValorUnitario.getValue());
+            compra.addItem(iv); //Agrega el item a la compra.
 
             ItemCompraTableModel ivtm = (ItemCompraTableModel) tbTablaItems.getModel();
-            ivtm.setDatos(compra.getItemcompraList());
+            ivtm.setDatos(compra.getItemcompraList()); //Obtiene la lista de items de la compra, para mostrar en la tabla.
 
-            ftfValorTotal.setText(String.valueOf(compra.getValorTotal()));
+            ftfValorTotal.setText(String.valueOf(compra.getValorTotal())); //Actualiza el valor total de la compra.
 
             limpiarFormularioItems();
         }
     }//GEN-LAST:event_btAgregarItemActionPerformed
-
+/**
+ * Método que borra un item de la compra.
+ * @param evt 
+ */
     private void btRemoverItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverItemActionPerformed
         if (tbTablaItems.getSelectedRowCount() > 0) {
             int registroSeleccionado = tbTablaItems.getSelectedRow();
@@ -421,7 +451,10 @@ public class RealizarCompra extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Selecione una linea para borrar.", "Alerta", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btRemoverItemActionPerformed
-
+/**
+ * Método que selecciona una compra.
+ * @param evt 
+ */
     private void tbTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTablaMouseClicked
         if (evt.getClickCount() == 2) {
             int registroSeleccionado = tbTabla.getSelectedRow();
@@ -447,14 +480,20 @@ public class RealizarCompra extends javax.swing.JInternalFrame {
             habilitarFormulario(true);
         }
     }//GEN-LAST:event_tbTablaMouseClicked
-
+/**
+ * Método que finaliza la compra
+ * @param evt 
+ */
     private void btFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFinalizarActionPerformed
         int opcion = JOptionPane.showConfirmDialog(this, "Desea finalizar la compra?");
         if (opcion == 0) {
             guardar(true);
         }
     }//GEN-LAST:event_btFinalizarActionPerformed
-
+/**
+ * Método que borra la compra.
+ * @param evt 
+ */
     private void btBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBorrarActionPerformed
         int opcion = JOptionPane.showConfirmDialog(this, "Desea cancelar la compra " + compra + "?");
         if (opcion == 0) {
@@ -469,16 +508,25 @@ public class RealizarCompra extends javax.swing.JInternalFrame {
             cargarTabla();
         }
     }//GEN-LAST:event_btBorrarActionPerformed
-
+/**
+ * Método que settea el Proveedor
+ * @param proveedor 
+ */
     public void setProveedor(Proveedor proveedor) {
         ftfProveedor.setValue(proveedor);
     }
-
+/**
+ * Método que settea el Producto.
+ * @param producto 
+ */
     public void setProducto(Producto producto) {
         ftfProducto.setValue(producto);
         ftfValorUnitario.setValue(producto.getPrecioCompra());
     }
-
+/**
+ * Metodo que habilita el formulario o lo deshabilita.
+ * @param activo 
+ */
     private void habilitarFormulario(boolean activo) {
         btNuevo.setEnabled(!activo);
         btGuardar.setEnabled(activo);
@@ -502,7 +550,9 @@ public class RealizarCompra extends javax.swing.JInternalFrame {
             limpiarFormulario();
         }
     }
-
+/**
+ * Método que limpia el formulario de compras.
+ */
     private void limpiarFormulario() {
         compra = null;
         ftfProveedor.setValue(null);
@@ -514,13 +564,18 @@ public class RealizarCompra extends javax.swing.JInternalFrame {
         tbTablaItems.setModel(new ItemCompraTableModel());
         limpiarFormularioItems();
     }
-
+/**
+ * Método que limpia el formulario de items.
+ */
     private void limpiarFormularioItems() {
         ftfProducto.setValue(null);
         spCantidad.setValue(1);
         ftfValorUnitario.setValue(new Double(0));
     }
-
+/**
+ * Método que valida el formulario de compras.
+ * @return 
+ */
     private boolean validarFormulario() {
         if (ftfProveedor.getValue() == null) {
             JOptionPane.showMessageDialog(this, "Proveedor invalido.", "Alerta", JOptionPane.WARNING_MESSAGE);
@@ -534,7 +589,10 @@ public class RealizarCompra extends javax.swing.JInternalFrame {
         }
         return true;
     }
-
+/**
+ * Método que valida el formulario de items.
+ * @return 
+ */
     private boolean validarFormularioItems() {
         if (ftfProducto.getValue() == null) {
             JOptionPane.showMessageDialog(this, "Producto invalido.", "Alerta", JOptionPane.WARNING_MESSAGE);
@@ -543,7 +601,9 @@ public class RealizarCompra extends javax.swing.JInternalFrame {
         }
         return true;
     }
-
+/**
+ * Método que carga la tabla de compras.
+ */
     private void cargarTabla() {
         CompraTableModel tm = (CompraTableModel) tbTabla.getModel();
         try {
@@ -552,7 +612,10 @@ public class RealizarCompra extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Error al cargar tabla.\n" + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+/**
+ * Método que guarda una compra en la base de datos.
+ * @param finalizar 
+ */
     private void guardar(boolean finalizar) {
         if (validarFormulario()) {
             compra.setCodigoProveedor((Proveedor) ftfProveedor.getValue());
@@ -560,7 +623,7 @@ public class RealizarCompra extends javax.swing.JInternalFrame {
             compra.setValorTotal(Double.parseDouble(this.ftfValorTotal.getText()));
 
             List<Itemcompra> itemCompra = compra.getItemcompraList();
-            
+
             for (Itemcompra item : itemCompra) {
                 ProductoDaoImpl productoDao = new ProductoDaoImpl();
                 Producto producto = item.getCodigoProducto(); //Obtengo el producto
@@ -569,7 +632,7 @@ public class RealizarCompra extends javax.swing.JInternalFrame {
                 producto.setCantidadStock(stockActual);
                 productoDao.edit(producto);
             }
-            
+
             if (finalizar) {
                 compra.setEstado(Estado.FINALIZADA);
             } else {

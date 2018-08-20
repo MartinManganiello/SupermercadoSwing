@@ -5,7 +5,11 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-
+/**
+ * Clase que define el modelo para la tabla Compra
+ *
+ * @author Martín Manganiello
+ */
 public class CompraTableModel extends AbstractTableModel{
  private final SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy");
     private final NumberFormat NFC = NumberFormat.getCurrencyInstance();

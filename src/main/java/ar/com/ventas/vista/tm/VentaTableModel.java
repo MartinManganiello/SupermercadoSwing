@@ -4,7 +4,11 @@ import ar.com.ventas.modelo.entidades.Venta;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-
+/**
+ * Clase que define el modelo para la tabla venta
+ *
+ * @author Martín Manganiello
+ */
 public class VentaTableModel extends AbstractTableModel {
 
     private final SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy");
