@@ -1,7 +1,6 @@
 package ar.com.ventas;
 
 import ar.com.ventas.vista.Menu;
-import java.awt.EventQueue;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
