@@ -41,9 +41,9 @@ La base de datos fue hecha en Workbench 6.3 CE a traves de un modelo. En la carp
 ## Como correr este proyecto
 1. Copiar el link para clonar el proyecto https://github.com/MartinManganiello/SupermercadoSwing.git
 2. Abrir **Netbeans IDE**, ir a **Team**, "**Git**", click sobre "**Initialize Git**" pegar la dirección anteriormente copiada "**Siguiente...**". Click en "**Siguiente**", y por último "**Finish**".
-![Clonar Proyecto](how-to-configure/01-clone-project.png)
-![Clonar Proyecto](how-to-configure/02-clone-project.png)
+![Clonar Proyecto](how-to-configue/01-clone-project.png)
+![Clonar Proyecto](how-to-configue/02-clone-project.png)
 3. Una vez hecho esto tendremos el proyecto abierto en NetBeans.
 4. Antes de ejecutarlo debemos tener corriendo el servidor Mysql con la base de datos del Sistema de Ventas.
 
-![Screenshot app](how-to-configure/03-screenshot-app.png)
+![Screenshot app](how-to-configue/03-screenshot-app.png)
